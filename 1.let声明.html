@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a;
+        let b, c, d;
+        let e = 100;
+        let f = 520,
+            g = true;
+        /*
+        1. 变量不能重复声明，防止变量被污染
+        2. 块级作用域： 
+            - ES5 中作用域有三种：全局，函数，eval（严格模式中）
+            - ES6 中加入了块级作用域，就是在代码块中有用，出了代码块就没用了。
+        3. 不存在变量提升：
+            - 变量提升是指在执行函数之前，先去收集变量；一般是var 声明的变量，变量提升后，赋值初始值为undefined，直到执行到赋值语句，变量才被赋值
+            - let 声明的变量不能被提升；
+        4. 不影响作用域链：
+             
+
+
+        */
+
+        {
+            let girl = 'liyi'
+        }
+
+        // console.log(girl) // 报错，因为girl只在块级作用域中有作用，全局中不能读取
+
+        {
+            var boy = "philip"
+        }
+
+        // var 定义的变量没有块级作用域，外部也可以读取
+        console.log(boy) // 输出： philip
+            // 块级作用域一般包含： if， else, for, while 这些循环语句大括号内
+
+        // 不影响作用域链
+        {
+            let school = "Concordia"
+
+            function fn() {
+                console.log(school)
+                    // 作用域里没有，所以向上一级去读取寻找school变量
+            }
+            fn()
+        }
+    </script>
+</body>
+
+</html>

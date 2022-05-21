@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>let 块级作用域实例</title>
+    <style>
+        .item {
+            width: 200px;
+            height: 50px;
+            border: blue solid 1px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 calss="page-header"> let 块级作用域实例</h2>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+    </div>
+    <script>
+        var items = document.getElementsByClassName("item")
+
+        for (let i = 0; i < items.length; i++) {
+            items[i].onclick = function() {
+                console.log('test')
+                console.log(this)
+                items[i].style.background = "pink";
+            }
+        }
+
+        // 或者用： 
+        for (var i = 0; i < items.length; i++) {
+            items[i].onclick = function() {
+                console.log('test')
+                console.log(this)
+                this.style.background = "red";
+            }
+        }
+
+        //  如果for 循环里用 var i = 0 定义 i,那么这个 i是没有块级作用域的，会一直是全局变量， 这样会自增到3， 最后回调函数如果用 items[i].style 设置样式会报错，
+        // 如果用 let 定义 for 循环里的变量 i, 那么i 就有块级作用域，回调函数的i 只会读取当前块作用域里的 i
+    </script>
+
+</body>
+
+</html>
