@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数声明与调用</title>
+</head>
+
+<body>
+    <!-- 
+        1. 生成器函数是ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同
+        2. 异步编程实现方法：以前都是用回调函数
+        3. 生成器函数可以实现异步编程
+        4. 函数代码的分隔符： yield ''
+
+     -->
+    <script>
+        // 创建生成器函数: 固定语法， function 和函数名之间要加一个 *
+        function* gen() {
+                console.log('hello generator1')
+                yield 'regina'
+                console.log('hello generator2')
+                yield 'toronto'
+                console.log('hello generator3')
+                yield 'USA'
+                console.log('hello generator4')
+
+            }
+            //  生成器函数的执行：
+        let iterator = gen()
+            //  借助 iterator 对象里面的 next 方法调用
+
+        console.log('------------')
+        iterator.next() // 输出： hello generator1, 因为有yield 分隔符，所以只执行第一段
+
+        console.log(iterator.next()) // 输出： {value: 'USA', done: false} 此处迭代器其实返回的是一个对象，值是 yild 后面字符串；
+
+        //  迭代器格式遍历
+
+        console.log('------------')
+        for (let e of gen()) {
+            console.log(e)
+        } // 输出返回的是： yiled 后面的字符串 和console.log 的执行结果;
+    </script>
+
+</body>
+
+</html>

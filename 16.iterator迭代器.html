@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterator 迭代器</title>
+</head>
+
+<body>
+    <!-- 
+        1. 迭代器 （只要对象里面有 .iterator 属性， 就可以用 for..of 或者 for ...in 进行遍历
+            - Iterator(迭代器)是一种接口，为各种不同的数据结构提供统一的访问机制，任何数据结构只要部署 iterator 接口，就可以完成遍历操作
+            - ES6 创造了一种新的遍历命令： for ... of  循环，iterator 接口（接口就是对象里的一个属性） 主要提供 for ... of 消费
+            - 原生具备 iterator 接口的数据 （可用 for ... of 遍历）
+               1. Array 2. Arguments 3. Set 4. Map 5. String 6. TypedArray 7. NodeList
+            - 工作原理： 
+               1. 创建一个指针对象，指向当前数据结构的起始位置
+               2. 第一次调用对象的 next 方法,指针自动指向数据结构的第一个成员
+               3。 接下来不断调用next 方法， 指针一直往后移动，直到指向最后一个成员
+               4. 每次调用next 方法返回一个包含value 和 done 的对象
+        2. 生成器：
+            -     
+     -->
+    <script>
+        //  声明一个数组:
+        const arr1 = [1, 2, 3, 5, 8]
+            //  使用 for ...of  遍历数组： 
+
+        for (let n of arr1) {
+            n = n * 2
+            console.log(n)
+        } // 输出： 2,4,6,10,16 ；  for ...of 循环里面保存的是键值
+
+        for (let n in arr1) {
+            n = n * 2
+            console.log(n)
+        } // 输出： 0,2,4,6,8 也就是 for ... in  巡回 里面保存的是键名
+
+        console.log(arr1)
+
+        let iterator = arr1[Symbol.iterator]()
+        console.log(iterator)
+            //  调用只针对新的next 方法，此处指针对象就是 iterator
+        console.log(iterator.next()) // 输出： {value: 1, done: false}
+        console.log(iterator.next()) // 输出： {value: 2, done: false}
+        console.log(iterator.next()) // 输出： {value: 3, done: false}
+        console.log(iterator.next()) // 输出： {value: 5, done: false}
+        console.log(iterator.next()) // 输出： {value: 8, done: false}
+        console.log(iterator.next()) // 输出： {value: undefined, done: true}
+    </script>
+</body>
+
+</html>

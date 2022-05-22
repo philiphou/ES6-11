@@ -10,9 +10,35 @@
 
 <body>
     <script>
-        //  1. 向对象中添加属性和方法 up down
+        //  1. 向对象中添加属性和方法 up down, 假设有个对象叫game, 我们不清楚game 有什么属性和属性方法， 但是我们想给game 加入两个叫 up 和 down 的属性方法
+        //  为了避免和game已有的属性方法重名，我们就用 Symbol 去让我们的up down 方法实现唯一性
 
-        let game = {...
+        let game = {}
+            //  声明一个对象： 
+        let method = {
+            up: Symbol(),
+            down: Symbol()
+        };
+        //  给 game 对象添加新的属性方法： 
+        game[method.up] = function() {
+            console.log('我可以向上飞')
+        }
+        game[method.down] = function() {
+            console.log('我可以向下飞')
+        }
+        game[method.up]()
+        game[method.down]()
+        console.log(game)
+
+        //  另外一种添加方式： 直接在对象里面用Symbol标识，添加属性方法，
+        let youxi = {
+            name: "majiang",
+            [Symbol('new')]: function() {
+                console.log("我是新的Symbol 属性方法")
+            },
+            [Symbol('say')]: function() {
+                console.log("i can speak")
+            }
         }
     </script>
 </body>

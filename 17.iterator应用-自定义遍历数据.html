@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterator的应用-自定义遍历数据</title>
+</head>
+
+<body>
+    <script>
+        // 声明一个对象
+
+        let banji = {
+            name: "No.7",
+            status: [
+                'xiaoming',
+                'xiaoning',
+                'xiaotian',
+                'knight'
+            ]
+        }
+
+        // for (let e of banji.status) {
+        //     console.log(e)
+        // } // 输出： xiaoming, xiaoning, xiaotian, knight
+
+        // banji.status.forEach(element => {
+        //     console.log(element)
+
+        // }); // 输出： xiaoming, xiaoning, xiaotian, knight
+
+
+        /* 
+        如果要面向对象，去遍历这个对象，而且使用 for ... of 遍历，返回的是对象属性status 数组的元素：
+        1. 给object 加上 iterator 属性接口
+        */
+        banji = {
+            name: "No.7",
+            status: [
+                'xiaoming',
+                'xiaoning',
+                'xiaotian',
+                'knight'
+            ],
+            [Symbol.iterator]() { //   [Symbol.iterator]()  此处作为对象的一个属性方法；
+                //  索引变量
+                let index = 0
+                _this = this;
+                return {
+                    next: function() {
+                        if (index < _this.status.length) {
+
+                            const result = {
+                                    value: _this.status[index],
+                                    done: false
+                                }
+                                //  让下标自增： 
+                            index++
+                            // 返回结果
+
+                            return result
+                        } else {
+                            return {
+                                value: undefined,
+                                done: true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        for (v of banji) {
+            console.log(v)
+        } // 输出：xiaoming, xiaoning, xiaotian, knight； 这样就完成了对对象的遍历，前提是我们给对象加入了 Iterator 属性方法接口，
+    </script>
+</body>
+
+</html>
