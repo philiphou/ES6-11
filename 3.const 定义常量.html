@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const 定义常量</title>
+</head>
+
+<body>
+    <script>
+        // 值不能修改的量叫常量： 
+        const school = "Regina"
+            /*
+            1, 定义常量一定要赋初始值
+            2. 一般常量使用大写， 潜规则
+            3. 常量值不能修改
+            4. 也是块级作用域；与leit 类似： 
+
+            {
+                const A=5
+            }
+            console.log(A) 会报错，读不到块级里面的 A 值
+            5. 对于数组和对象元素（注意是元素）的修改，不算对常量的修改，不会报错,注意是修改，不是重新赋值，如果
+            */
+        const array = ["a", "c", 100]
+        console.log(array)
+        array.push("philip") // 此处只是修改元素，不会报错，因为数组的保存地址没有变
+            // array=['c','e'] // 此处是重新赋值，会报错，
+        console.log(array)
+    </script>
+</body>
+
+</html>

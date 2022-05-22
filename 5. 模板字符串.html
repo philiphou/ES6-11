@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 模板字符串</title>
+</head>
+
+<body>
+    <script>
+        // ES6 引入新的声明字符串的方式 `` (反引号)
+        // 1. 声明
+        let str = "我是一个粉刷匠"
+
+        console.log(str, typeof(str))
+            //2. 模板字符串可以使内容中直接出现换行符
+
+        let str2 = `<ul>
+                        <li>喜剧</li>
+                        <li>动作</li>
+                   </ul>`
+            // 3. 可以进行变量拼接, 语法是固定写法 ${变量名}
+        let food = "bread"
+        let like = `${food} is my favourite food`
+        console.log(like)
+    </script>
+</body>
+
+</html>

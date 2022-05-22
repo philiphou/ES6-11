@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6箭头函数</title>
+</head>
+
+<body>
+    <script>
+        // ES6 允许使用箭头 => 定义函数
+
+        let fn1 = function(a, b) {
+            console.log(a + b)
+        }
+        let fn2 = (a, b) => {
+            console.log(a + b)
+        }
+        fn1(4, 5)
+        fn2(1, 3)
+            /*箭头函数与传统函数比较新特点：
+            1. this 是静态的 。 this 始终是指向函数声明时所在作用域下的this 的值；平常的函数情况下，this 就是谁来调用我，this 就是谁；
+            */
+        function getName1() {
+            console.log(this.name)
+        }
+        let getName2 = () => {
+                console.log(this.name)
+
+            }
+            // 设置 window 对象的 name 属性
+        window.name = "全局window名"
+            //   创建一个对象
+        let obj = {
+                name: "obj对象名"
+            }
+            //  直接全局调用上述两个方法： 
+        getName1() // 输出 window 名 ， 直接调用时候 this就是指向的window, 我们的函数也都是在全局作用域下声明的。
+        getName2() // 输出 window 名 ， 直接调用时候 this就是指向的window, 我们的函数也都是在全局作用域下声明的。
+
+        // call 方法调用（可以改变函数内部的 this 值）
+        getName1.call(obj) // 输出 obj 的name
+        getName2.call(obj) // 依然输出 window 全局的 Name, 说明箭头函数的this是静态的，此时依然指向定义箭头函数时候的this 也就是 winoow
+
+        /*箭头函数与传统函数比较新特点：
+          2. 不能作为构造函数实例化对象,也就是箭头函数不能作为构造函数去实例化；
+          */
+        let Person = (name, age) => {
+                this.name = name,
+                    this.age = age
+            }
+            // let me = new Person("philip", 30) // 报错，Person 函数不是一个 constructor
+            /*箭头函数与传统函数比较新特点：
+          3. 不能使用 arguments 变量
+          */
+
+        let fn3 = () => {
+                console.log(arguments)
+            }
+            // fn3(1, 2, 3) // 会报错，说 arguments 没有定义
+            /*箭头函数与传统函数比较新特点：
+          4.   箭头函数的简写 ：1）省略小括号， 当形参有且只有一个时候 2）省略大括号： 当代码体只有一条语句时候, 此时 return 必须省略 ，而且语句执行结果就是函数返回值       */
+
+        let double = n => {
+            return n + n
+        }
+        let power = n => n * n
+        console.log(power(3))
+    </script>
+</body>
+
+</html>

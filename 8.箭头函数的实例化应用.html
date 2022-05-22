@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数的实例化应用</title>
+</head>
+<style>
+    #result {
+        border: 1px red solid;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+
+<body>
+    <div id="result">
+
+    </div>
+    <script>
+        // 需求1： 点击 div， 两秒后变色
+        var result = document.getElementById("result")
+        result.addEventListener("click", function(e) {
+            // 保存this 的值，供 setTimeout 里回调使用，不然定时器里面this 指向的是全局 
+            let _this = this // 此处 this 就是 e.target 也就是 div
+                //   加一个定时器
+            setTimeout(function() {
+                // 修改背景颜色
+                _this.style.background = 'pink'
+            }, 2000)
+
+        })
+
+        // 上述方法可以利用箭头函数：因为箭头函数的this 是静态的，永远指向定义箭头函数时候作用域的this, 此处的thi就是div 
+
+
+        result.addEventListener('click', function() {
+            setTimeout(() => {
+                this.style.background = "yellow" // 此处的this 指向箭头函数在声明时候所在的作用域下的this 的值；，此处是 clcik 回调函数， 回调函数的this 又指向事件源发
+            }, 2000)
+        })
+
+
+        //  需求2： 从数组中返回偶数的元素
+        let array = [1, 4, 5, 8, 6, 9, 3, 7, 12]
+        console.log(array.filter(n => n % 2 === 0))
+
+        // 箭头函数更适合与this 无关的回调，很方便； 箭头函数不适合与this 有关的事件回调；也不适合对象的方法；
+    </script>
+</body>
+
+</html>

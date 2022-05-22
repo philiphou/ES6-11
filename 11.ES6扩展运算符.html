@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 扩展运算符</title>
+</head>
+
+<body>
+    <script>
+        //  ... 是扩展运算符 （三个点）， 功能是将数组转换为逗号分割的参数序列；
+
+        const tfboys = ["易烊千玺", "philip", "tom"]
+
+        //  声明一个函数 
+        function chunwan() {
+            console.log(arguments)
+        }
+        chunwan(...tfboys) // 此处等同于： chuanwan("易烊千玺", "philip", "tom") 伪数组；， 和rest 像，但是不一样，rest （...args) 是放在了函数声明形参的最后，
+    </script>
+</body>
+
+</html>

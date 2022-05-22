@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符使用实例</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // 1. 数组的合并
+        const kuaizi = ['tomm', 'jack']
+        const fenghuang = ['zengyi', 'shuaiqi']
+        const c1 = kuaizi.concat(fenghuang) // c1 此处是合并后数组 
+        console.log(c1) // 输出：['tomm', 'jack', 'zengyi', 'shuaiqi']
+            //  使用扩展运算符进行数组合并
+        const c2 = [...kuaizi, ...fenghuang]
+        console.log(c2) //输出：['tomm', 'jack', 'zengyi', 'shuaiqi']
+            // 2. 数组的克隆
+
+        const s1 = ['E', 'G', 'F']
+        const s2 = [...s1] // 克隆s1，赋值给数组s2
+        console.log(s2) // 输出： ['E', 'G', 'F']
+            // 3.将伪数组转换成真正的数组
+        const divs = document.getElementsByTagName("div")
+        console.log(divs) // 输出的是对象伪数组
+            //  利用扩展符变成真正数组:
+        const divarr = [...divs]
+        console.log(divarr) // 输出的是真正的数组类型
+    </script>
+</body>
+
+</html>

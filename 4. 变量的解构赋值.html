@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6变量的解构赋值</title>
+</head>
+
+<body>
+    <script>
+        /*
+                            1. ES 6 允许按照一定模式从数组和对象中提取值，对变量进行赋值，称之为解构赋值
+                        
+                            */
+
+        // 2. 数组的解构 
+
+        const CITY = ['beijing', 'shanghai', 'guangzhou', 'shenzhen']
+        let [B, SH, G, S] = CITY; // 这样就把CITY 里的4个元素分别赋值给了B,S,G,S四个变量
+        console.log(B)
+        console.log(SH)
+
+        // 3. 对象的解构
+        const lover = {
+            name: "liyi",
+            age: 30,
+            status: function() {
+                console.log('我们回不去了')
+            }
+        }
+        let {
+            name,
+            age,
+            status
+        } = lover
+        console.log(name)
+        status()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 Symbol 创建</title>
+</head>
+
+<body>
+    <script>
+        //  创建一个 Symbol, 利用函数创建
+        const s = Symbol()
+        console.log(s, typeof(s)) // 输出： Symbol() 'symbol' ； 对于我们，唯一性是不可见的，是内部实现的；
+        let s2 = Symbol("philip") //Symbol() 传入一个描述字符串“philip”， 相当于注释，比如为谁设置的
+        let s3 = Symbol("philip")
+        console.log(s2, s3, s2 === s3) //Symbol(philip) Symbol(philip) false ; 说明虽然传入的描述字符串相同，但是 s2 和 s3 是单独不同的唯一的；
+            //  创建Symbol 的其他方法： Symbol.for()
+
+        let s4 = Symbol.for('philip')
+        let s5 = Symbol.for("philip")
+        console.log(s4, typeof(s4)) //输出：Symbol(philip) 'symbol'
+        console.log(s4 === s5) // 输出： true; 这种情况下，s4 和 s5 是相同的；
+
+        //  Symbol 不能与其他数据进行运算；
+
+        /*
+        JS 数据类型复习： USONB (you are so NB)
+    </script>
+</body>
+
+</html>

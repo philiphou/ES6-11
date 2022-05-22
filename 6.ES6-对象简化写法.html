@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 简化对象写法</title>
+</head>
+
+<body>
+    <script>
+        // ES5 允许大括号里面，直接写入变量和函数，作为对象的属性和方法，这样写更加简结
+        let name = "philip"
+        let change = function() {
+            console.log('我可以飞翔')
+        }
+        const obj = {
+                name,
+                change
+            } // 此处相当于： obj = {name:name, change:change} ES6, 允许我们直接只把变量放进来；
+        console.log(obj)
+        obj.change()
+        const obj2 = {
+                name,
+                change,
+                improve: function() {
+                    console.log("w我可以飞的更高")
+                }
+            }
+            //现在ES6可以直接简化为： 
+        const obj2a = {
+            name,
+            change,
+            improve() {
+                console.log("我可以飞的更高")
+            }
+        }
+        console.log(obj2a)
+        obj2a.improve()
+    </script>
+</body>
+
+</html>
