@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set 的实践</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3, 4, 4, 5, 6, 3, 1, 6]
+            //  1. 数组去重
+        let s1 = new Set(arr) // 此处将数组作为参数传入Set() 构建一个 s1 实例
+        let result = [...s1] // 因为s1 是 set 类型，配备了 iterator 接口，所以可以利用扩展运算符将其转化赋值给数组 result，此处的s1已经实现了去重
+        console.log(result) // 输出去重后的数组： [1, 2, 3, 4, 5, 6]
+            // 2. 求交集
+        let arr2 = [3, 5, 8, 4]
+        let jiaoji = result.filter(e => {
+                //    判断去重后的arr1里的元素是否在arr2 里面
+                const s2 = new Set(arr2) // s2 就是arr2去重后的结果，是set结构，object 类型
+                if (s2.has(e)) {
+                    return true
+                } else {
+                    return false
+                }
+            }) // 可以简化为： let jiaoji = [...new Set(arr1)].filter(e=>new Set(arr2).has(e))
+        console.log(jiaoji) // 输出： [3, 4, 5]
+
+
+        // 3. 求并集
+        let union = [...arr, ...arr2]
+        let s3 = new Set(union)
+        let outcome = [...s3]
+        console.log(outcome) // 输出：[1, 2, 3, 4, 5, 6, 8] 是 合集
+
+        // 4. 求差集
+        let diff = [...new Set(arr)].filter(e => !new Set(arr2).has(e)) // 主体是 arr， 寻找 arr 里有 但是 arr2 里没有的元素
+        console.log(diff) // s输出： 【1,2,6】
+    </script>
+</body>
+
+</html>

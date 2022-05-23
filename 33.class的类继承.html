@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class 类继承</title>
+</head>
+
+<body>
+    <script>
+        // ES6 实现父类继承： 1. 利用 class 声明 父类：
+        class Phone {
+            //  调用构造方法，设置初始化属性
+            constructor(brand, price) {
+                    this.brand = brand;
+                    this.price = price;
+                }
+                //  父类的成员（实例化对象）属性方法：
+            call() {
+                console.log('我可以打电话')
+            }
+        }
+        // 2. 声明一个子类： 并继承父类里面的属性和方法：固定语法 calss 子类名 extends 父类名 {}
+        class SmartPhone extends Phone {
+            // 调用构造方法：添加子类的属性 
+            constructor(brand, price, color, size) {
+                    //     调用父类的属性
+                    super(brand, price) //此处类似于ES5 中的 父类名.call(this,参数1，参数2)，其中参数1，参数2 是和父类中同名的参数，继承下来
+                        // 初始化子类里面的属性
+                    this.color = color;
+                    this.size = size;
+
+                }
+                //  添加子类里面独有的方法： 
+            photo() {
+                console.log("我可以拍照 ES6")
+            }
+
+        }
+
+        // 3. 实例化
+
+        let sanxing = new SmartPhone('sanxing', '2888', 'black', '18inch')
+        console.log(sanxing)
+        sanxing.call()
+        sanxing.photo()
+        console.log(sanxing.color)
+    </script>
+
+</body>
+
+
+</html>

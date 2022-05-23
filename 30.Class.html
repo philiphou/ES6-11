@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 介绍与体验</title>
+</head>
+
+<body>
+    <script>
+        //  ES 5 方式： 用构造函数去实例化一个对象
+        function Phone(brand, price) {
+            this.brand = brand;
+            this.price = price
+        }
+        //  添加方法; 通过原型对象进行添加，这样可以做到重用
+        Phone.prototype.call = function() {
+                console.log('我可以打电话')
+            }
+            //  实例化对象： 
+        let Huawei = new Phone("huawei", "5000")
+        console.log(Huawei) // 输出：Phone {brand: 'huawei', price: '5000'}
+        Huawei.call() // 输出：我可以打电话
+
+        //   利用 ES 6 的 class 类 新方法实现上述功能：
+
+        class PhoneB {
+            // 构造方法： 名字不能修改
+            constructor(brand, price) {
+                    // 添加属性
+                    this.brand = brand;
+                    this.price = price;
+                }
+                //  添加属性方法，直接写函数； 必须使用这样的语法，方法直接写成函数，放在下面， 不能使用ES5 的对象完整方式
+            call() {
+                console.log("我可以打电话-ES6")
+            }
+        }
+        //  上面类已经创建好，我们可以实例化： 
+        let Xiaomi = new PhoneB("xiaomi", "2999")
+        console.log(Xiaomi) // 输出：PhoneB {brand: 'xiaomi', price: '2999'}
+
+        Xiaomi.call() // 输出：我可以打电话-ES6
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数的继承</title>
+</head>
+
+<body>
+    <script>
+        //  ES5 里面的构造函数实现继承
+        //：1. 创建父级构造函数-手机
+        function PhoneA(brand, price) {
+            this.brand = brand;
+            this.price = price
+        }
+        //  向PhoneA的原型里添加方法： 
+        PhoneA.prototype.call = function() {
+            console.log('我可以打电话')
+        }
+
+        //  2. 创建子级构造函数- 智能手机
+        function SmartPhoneA(brand, price, color, size) {
+            // 去调用父级构造函数里的初始化代码：PhoneA 通过 call() 方法，改变this 值，此处this 指向 SmartPhoneA, 然后传入 brand, price 参数
+            PhoneA.call(this, brand, price)
+                //  继续添加子级构造函数的属性
+            this.color = color;
+            this.size = size;
+        }
+        //    为了实现继承，子级构造函数也要继承父级构造函数原型里的方法： 也就是将 SmartPhoneA 的原型变成 父级构造函数 PhoneA 的一个实例！
+        SmartPhoneA.prototype = new PhoneA
+            //  同时修改子级构造函数的constructor 指向
+        SmartPhoneA.prototype.constructor = SmartPhoneA
+            //  上述方法就实现了子级类从父类的所有继承。
+
+        //  下面可以开始声明子类的方法
+        SmartPhoneA.prototype.photo = function() {
+            console.log(" 我可以拍照")
+        }
+        let sp1 = new SmartPhoneA("apple", "1999", "golden", '15inch')
+        console.log(sp1)
+        sp1.call()
+        sp1.photo()
+        console.log(sp1.color)
+    </script>
+
+</body>
+
+</html>

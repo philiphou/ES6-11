@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 的静态成员</title>
+</head>
+
+<body>
+    <script>
+        //  ES 5 静态成员：
+        function Phone(brand, price) {
+            //  此处的 brand， 和 price  属性是属于类的，不是实例对象的。除非实例对象传入了参数。 
+            this.brand = brand;
+            this.price = price;
+
+        }
+        //  往构造函数原型上添加属性和方法，那么实例对象也可以继承此属性和方法： 
+        Phone.prototype.name = "手机"
+        Phone.prototype.change = function() {
+            console.log('我会变身')
+        }
+        let xiaomi = new Phone();
+        console.log(xiaomi.name) // 输出：手机
+        xiaomi.change() // 输出：我会变身
+
+        //  ES -6  
+
+        class PhoneB {
+            // 下面设置静态属性，static 标注的属性和方法，属于类，但不属于实例对象：
+            static name = '手机';
+            static changeB() {
+                console.log('ES6-我可以变身')
+            }
+        }
+        let nokia = new PhoneB()
+        console.log(nokia.name) // 输出： undefined
+        console.log(PhoneB.name) // 输出：手机
+            // nokia.changeB() // 会报错
+        PhoneB.changeB() // 输出：ES6-我可以变身
+    </script>
+
+</body>
+
+</html>

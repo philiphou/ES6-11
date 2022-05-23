@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map 的介绍与API</title>
+</head>
+
+<body>
+    <script>
+        //  声明一个 map
+
+        let m = new Map()
+            //  1. 添加元素 ： set（） 传入的参数是键值对
+        m.set("name", "liyi")
+        m.set("age", 25)
+        console.log(m, typeof(m)) // 输出： {'name' => 'liyi', 'age' => 25} 'object'
+            //  2.map 的键也可以是对象，例如
+
+        let keyobj = {
+                school: "尚硅谷"
+            }
+            //    添加新元素，键名是上面的对象： 
+        m.set(keyobj, ['beijing', "shanghai", "qingdao"])
+
+        //  3. get（）读取键名对应的值
+        let key = "age"
+        console.log(m.get(key)) //输出： 25
+        console.log(m.get(keyobj)) // 输出： ['beijing', 'shanghai', 'qingdao']
+            // 4. 读取size()
+        console.log(m.size) // 输出： 3
+
+        //  5. 删除元素 .delete() 传入参数是键名
+        m.delete('age')
+        console.log(m) // 输出：{'name' => 'liyi', {…} => Array(3)}
+            //  6 。 清空 map
+        m.clear()
+        console.log(m.size) //输出： 0
+            //  7. 遍历
+
+        let m2 = new Map()
+        m2.set("name", "liyi")
+        m2.set("age", 55)
+        m2.set("city", "toronto")
+        for (let e of m2) {
+            console.log(e) // 输出：  ['name', 'liyi'] ['age', 55] ['city', 'toronto'] 输出的是3个数组，数组元素是2个，对应键和值；
+        }
+    </script>
+</body>
+
+</html>
