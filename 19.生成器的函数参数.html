@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数参数</title>
+</head>
+
+<body>
+    <script>
+        function* gen(arg) {
+                console.log(arg)
+                let one = yield '1';
+                console.log(one)
+                let two = yield '2';
+                console.log(two * 2)
+                yield '3';
+            }
+            //  执行获取迭代器对象，可以同时传入实参
+        let iterator = gen("philip")
+        console.log(iterator.next()) // 输出： philip  {value: '1', done: false} 此处打印了传入的实参 philip,
+            // next 方法也可以传入实参，这个实参将作为对应的yield 的函数体代码块的实参，
+        console.log(iterator.next('liyi')) // 输出： liyi，  {value: '2', done: false}
+            //  第三次调用 next() 可以传入新的实参，并在yield 分隔符分开的额第三个代码块传入相应实参
+        console.log(iterator.next(3)) // 输出： 6， {value: '3', done: false}
+    </script>
+</body>
+
+</html>

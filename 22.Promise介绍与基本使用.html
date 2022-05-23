@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise 介绍与基本使用</title>
+</head>
+
+<body>
+    <!-- 
+        
+   Promise: 是ES6 引入的异步编程的新解决方案，语法上Promise 是一个构造函数，用来封装异步操作，并可以获取其成功或失败的结果
+   1. Promise： 构造函数 Promise(excutor){}
+   2. Promise.prototype.then 方法
+   3. Promise.prototype.catch 方法
+        
+     -->
+
+    <script>
+        // 实例化：Promise 对象; Promise 的参数是个函数，函数里面有两个形参 resolve,和 reject, 这两个形参又分别都是函数;
+
+        const p = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                // 
+                let data = '数据库中的用户数据'
+                    //  resolove（） 方法调用
+                    // resolve(data); // 调用了resolve 方法一般就是表示成功，同时promise 状态就变成了成功，然后接着调用.then()方法
+
+                //  如果数据读取时候发生了错误， 
+
+                let error = "数据读取失败"
+                    // 如果调用了 reject () 函数表示数据读取失败，同时promise 对象的状态变为失败，再调用.then () 方法时候就执行 fn(reason) 的回调
+                reject(error) // 同时这个error 的真实值在调用.thn() 时候传入 fn(reason) 里的形参 reason
+            }, 1000)
+
+        })
+
+        //  调用 promise 对象里的 .then 方法：then 方法接受两个函数形参， 分别处理成功或者失败
+        p.then(function(value) {
+            console.log(value)
+        }, function(reason) {
+            console.error(reason)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise对象的Catch 方法</title>
+</head>
+
+<body>
+    <script>
+        const p = new Promise((reslove, reject) => {
+            setTimeout(() => {
+                //  设置 promise对象的状态为失败模式，并返回失败信息（值）
+                reject("大爷不好了，出错了")
+
+            }, 2000);
+        });
+        p.then(value => {}, reason => {
+                console.error(reason)
+
+            })
+            //  上面的 .then() 回调我们也可以用 .catch() 方法去处理，只用需要表明一个回调： 
+        p.catch(reason => {
+            console.warn(' 我是catch 结果：' + reason)
+        })
+    </script>
+
+</body>
+
+</html>

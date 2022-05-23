@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise 封装 Ajax 请求</title>
+</head>
+
+<body>
+    <script>
+        // 接口地址： http://api.apiopen.top/getJoke
+        const p = new Promise(function(resolve, reject) {
+            //  原生 Ajax 发送请求方法： 1. 创建对象
+            const x = new XMLHttpRequest();
+            // 2. 初始化、
+            x.open('GET', 'http://api.apiopen.top/getJoke')
+                // 3.发送请求
+            x.send()
+                // 4. 绑定事件，回调函数，处理结果
+
+            x.onreadyStatechange = function() {
+                if (x.readystate === 4) {
+                    if (x.status >= 200 && x.status < 300) {
+                        resolve(x.response)
+                    } else {
+                        reject(x.status)
+                    }
+                }
+            }
+
+            //  利用promise 对上述代码进行封装
+
+        }).then((value) => {
+            console.log(value)
+        }, (reason) => {
+            console.log(reason)
+        })
+    </script>
+</body>
+
+</html>

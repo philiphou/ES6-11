@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数实例</title>
+</head>
+
+<body>
+    <!-- 利用生成器函数实现异步编程操作 -->
+    <script>
+        /*   
+                                                                                                                                    异步编程：文件操作，文件读取，网络操作 ajax ， 数据库操作；
+                                                                                                                                    1. 1s 后输出 111， 2s 后 输出 222 ， 3s 后 输出 333 
+                                                                                                                                    2. 避免回调地狱
+                                                                                                                                           */
+        //    创建 3 个函数，分别输出相应的结果
+        function one() {
+            setTimeout(() => {
+                console.log('111')
+                iterator.next()
+            }, 1000)
+        }
+
+        function two() {
+            setTimeout(() => {
+                console.log('222')
+                iterator.next()
+            }, 2000)
+        }
+
+        function three() {
+            setTimeout(() => {
+                console.log('333')
+                iterator.next()
+            }, 3000)
+        }
+
+        // 创建一个生成器函数
+
+        function* gen() {
+                //    利用分隔符，放入三个创建好的函数
+                yield one();
+                yield two();
+                yield three();
+            }
+            //  调用生成器函数
+        let iterator = gen()
+            //  利用 iterator里的next()方法调用函数
+        iterator.next() // 输出： 定时输出相应结果 111 222 333
+    </script>
+</body>
+
+</html>

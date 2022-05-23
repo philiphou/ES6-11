@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生成器函数实例2</title>
+</head>
+
+<body>
+    <script>
+        //  用定时器 模拟获取 用户数据， 订单数据 商品数据
+        function getUsers() {
+            setTimeout(() => {
+                let data = '用户数据'
+                    //  调用 next()方法，并且将数据传入
+                iterator.next(data)
+            }, 1000)
+        }
+
+        function getOrders() {
+            setTimeout(() => {
+                let data = '订单数据'
+                iterator.next(data)
+            }, 1000)
+        }
+
+        function getItems() {
+            setTimeout(() => {
+                let data = '商品数据'
+                iterator.next(data)
+            }, 1000)
+        }
+
+        function* gen() {
+            let users = yield getUsers(); // 此时下面调用 。next() 时候进入第一段函数体执行，又一次进行了传参，传入data 实参，并返回赋值给 users
+            console.log(users)
+            let orders = yield getOrders();
+            console.log(orders)
+            let items = yield getItems();
+            console.log(items)
+        }
+        let iterator = gen()
+        iterator.next() // 依次隔1s输出： 用户数据 订单数据 商品数据
+    </script>
+</body>
+
+</html>
