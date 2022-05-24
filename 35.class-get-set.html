@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>class 里的 get 和 set </title>
+</head>
+
+<body>
+    <script>
+        //  get 和 set : 下面的class 虽然没有构造函数，但也是合法的，构造函数不是必须的。
+        class Phone {
+            get price() {
+                console.log('价格属性被读取了')
+                return "iloveyou"
+            }
+            set price(newVal) { // 此处 set price() 必须要传入一个参数，用作新的price 属性的值
+                console.log('我要修改price 属性值了')
+
+            }
+        }
+        // 实例化一个对象
+        let p1 = new Phone()
+            //console.log(p1.price) // 输出： 价格属性被读取了。 iloveyou； 此时 iloveyou 就是 price 属性的值，
+            //前面的“价格属性被读取” 是因为执行了 get price() 输出的，price属性值是 retrun 的值；
+        p1.price = 520 // 输出：我要修改price 属性值了 ； 这是因为 set price() 函数被触发了，输出了执行结果，触发的原因是对 p1.price 进行重新赋值了（修改了）
+    </script>
+</body>
+
+</html>

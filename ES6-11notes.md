@@ -35,5 +35,17 @@
         4. super 调用父级构造方法
         5. static 定义静态方法和属性
         6. 父类方法可以重写
+* ES6的数值扩展
+    - Number.EPSILON 是JavaScript 表示的最小精度，属性值接近于： 2.20446049250E-16, 若果两个数的差值小于这个数，那么这两个数就想等。 主要用于浮点数运算。
+    - 二进制和八进制，还有十六进制： 0b, 0o, 和 0x 开头；
+    - Number.isFinite 用来检测一个数值是否为有限数
+    - Number.isNaN 用来检测一个数值是否为 NaN
+    - Number.parseInt 和 Number.parseFloat: 用来字符串转整数；
+    - Number.isInteger 判断一个数字是否为整数
+    - Math.trunc: 将数字的小数部分抹掉
+    - Math.sign 检测一个数是正数还是负数还是0
 
+
+   
+        
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6 中对象的方法扩展</title>
+</head>
+
+<body>
+    <script>
+        // 1. Object.is（）判断两个值是否完全相等：
+
+        console.log(Object.is(120, 121)) //输出：false;  作用类似于 === 
+        console.log(Object.is(NaN, NaN)) // 输出： true; 注意下面
+        console.log(NaN === NaN) // 输出： false
+            // 2. Object.assign 对象的合并
+
+        const config1 = {
+            host: "localhost",
+            port: 3100,
+            name: 'liyi',
+            pass: "root",
+            test: "test"
+        };
+        const config2 = {
+            host: "http://127.0.0.1",
+            port: 8000,
+            name: "philip",
+            pass: '520',
+            test2: "test2"
+        }
+        console.log(Object.assign(config1, config2)) // 输出：{host: 'http://127.0.0.1', port: 8000, name: 'philip', pass: '520',test:"test",test2:"test2"} 
+            // 就是后面的对象把前面对象内容覆盖了,前面对象有的但是后面对象没有的属性，依然保留前面的，比如上面的 test 属性；相当于是个合并，
+            //同理 后面有，前面没有的，返回结果也加上。 比如上面的后面有的 test2 属性，也一起合并到结果里返回输出；
+            // 3. Object.setPrototypeOf() 用来设置原型对象； Object.getPrototypeof()
+        const school = {
+            name: "尚硅谷",
+        }
+        const cities = {
+                city: ['beijing', 'shanghai', 'shenzhen']
+            }
+            //  为school对象设置原型： 
+        Object.setPrototypeOf(school, cities)
+        console.log(school) // 输出结果：{name: '尚硅谷'} 其 原型是 object  cities, 就是把后面的对象设置成为前面对象的原型；
+        console.log(Object.getPrototypeOf(school)) // 输出：
+    </script>
+
+</body>
+
+</html>
