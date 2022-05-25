@@ -10,7 +10,7 @@
 
 <body>
     <script type="module">
-        /* 引入m1.js 模块里的功能或方法 import,此时 script 标签type 是 Module // 语法是用 import 命令引入 */ import * as m1 from "./m1.js"; console.log(m1);
+        import * as m1 from "./m1.js"; console.log(m1); import * as m2 from "./m2.js"; console.log(m2); import * as m3 from "./m3.js"; console.log(m3); m3.default.change();
     </script>
 </body>
 

@@ -57,6 +57,27 @@
     - ES6 模块化基本语法：主要由两个命令构成： export 和 import
         1. export 命令用于规定模块的对外接口
         2. import 命令用于输入其他模块提供的功能
+    - ES6 中导入方式： 
+        1. 通用方式： 
+            import * as 变量名 from “路径" 
+        2. 解构赋值的形式：
+             - import { school, findJob } from "./m2.js"; console.log(school, teach); 
+             - import {default as m3} from "./m3.js" ;console.log(m3.School); console.log(m3); m3.teach()
+             - 简便模式，只针对默认暴露：  import m3 from "./m3.js"; console.log(m3); m3.teach()
+    - ES7 新特性： 
+        1. Array.prototype.includes 属性方法： 用来检测数组中是否含有某个元素，返回布尔值
+        2. ES 7 中引入指数运算符（幂运算） 语法： ** ， 功能与 Math.pow结果相同
+    - ES8 新特性
+        1. async 和 await
+            - async 和 await 两种语法结合， 可以让异步代码像同步代码一样
+            - async 函数的返回值是 promise 对象
+            - promise 对象的结果 由 async 函数执行的返回值决定
+        2. await表达式
+            - await 必须在async函数中
+            - await 右侧的表达式一般为promise 对象
+            - await 返回的是promise成功的值
+            - await 的promise 失败了，就会抛出异常，需要通过 try...catch 捕获处理；
+
      
 
 

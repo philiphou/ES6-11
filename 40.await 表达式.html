@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>await 表达式</title>
+</head>
+
+<body>
+    <script>
+        //  创建一个promise 对象
+
+        const p1 = new Promise((resolve, reject) => {
+                resolve('成功6+1')
+
+            })
+            // await 表达式要放在 async 函数中， 但async 里面不一定必须要有await,是单向的依赖
+        async function fn() {
+            // await 返回的结果就是promise p1的结果
+            let result = await p1;
+            //  查看结果
+            console.log(result)
+        }
+        //  调用函数：
+        fn() // 输出： 成功6+1
+
+        const p2 = new Promise((resolve, reject) => {
+            reject("我草，失败了")
+        })
+        async function f2() {
+            try {
+                let result = await p2;
+                console.log(result)
+            } catch (e) {
+                console.log(e) // 输出： 我草，失败了
+            }
+        }
+        f2()
+    </script>
+
+</body>
+
+</html>
