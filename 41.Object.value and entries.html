@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES8 对象方法扩展</title>
+</head>
+
+<body>
+    <script>
+        // 声明一个对象
+        const love = {
+                name: "liyi",
+                cities: ['regina', 'beijing', 'panjin'],
+                number: [520, 888, 666, 315]
+            }
+            //  获取对象所有的键名:
+        console.log(Object.keys(love)) // 输出：['name', 'cities', 'number']
+            //  获取所有的值： 
+        console.log(Object.values(love)) // 输出：['liyi', Array(3), Array(4)]
+            //  获取所有的entries:
+        console.log(Object.entries(love)) // 输出： [Array(2), Array(2), Array(2)]  返回的数组里的元素也是数组，元素数组里是键值，例如：['name', 'liyi']
+            //  这样方便创建一个map: 
+        const m = new Map(Object.entries(love))
+        console.log(m) // 输出：{'name' => 'liyi', 'cities' => Array(3), 'number' => Array(4)} 
+        console.log(m.get('name')) // 输出： liyi
+        console.log(m.get('cities')) // 输出：['regina', 'beijing', 'panjin']
+            //  对象属性的描述的对象
+        console.log(Object.getOwnPropertyDescriptors(love)) // 返回：{name: {…}, cities: {…}, number: {…}}
+    </script>
+
+</body>
+
+</html>

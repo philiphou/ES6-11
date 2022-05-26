@@ -77,9 +77,17 @@
             - await 右侧的表达式一般为promise 对象
             - await 返回的是promise成功的值
             - await 的promise 失败了，就会抛出异常，需要通过 try...catch 捕获处理；
+        3. 对象的方法扩展：
+            - Object.values 和 Object.entries
+              Object.values() 返回一个给定对象的所有可枚举属性值的数组
+              Object.entries() 返回一个给定对象的自身可遍历属性[key,value] 的数组
 
-     
-
+    - ES9 新特性
+        1. 扩展运算符与rest 参数
+            - Rest 参数与 spread 扩展运算符在ES6中已经引入，不过ES6中只针对数组，
+            - 在ES9 中，为对象提供了像数组一样的rest参数和扩展运算符
+            
+ 
 
    
         

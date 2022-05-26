@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES9正则扩展dotAll模式</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>
+            <a>血战钢铁岭</a>
+            <p>上映时间：1995</p>
+        </li>
+        <li>
+            <a>我是谁</a>
+            <p>上映时间：1998</p>
+        </li>
+        <li>
+            <a>警察故事</a>
+            <p>上映时间：2005</p>
+        </li>
+    </ul>
+    <script>
+        //  dot 。 元字符 除换行符意外的任意单个字符
+
+        let str = `<ul>
+        <li>
+            <a>血战钢铁岭</a>
+            <p>上映时间:1995</p>
+        </li>
+        <li>
+            <a>我是谁</a>
+            <p>上映时间:1998</p>
+        </li>
+        <li>
+            <a>警察故事</a>
+            <p>上映时间:2005</p>
+        </li>
+    </ul>`
+
+        //  需求是 把 电影名称和放映时间提取出来放入一个对象中：利用  dot all 新特性 ， 加 ？ 是为了禁止贪婪； gs 是为了全部匹配
+
+        const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs
+        let result
+        let data = []
+        while (result = reg.exec(str)) {
+
+            data.push({
+                title: result[1],
+                Year: result[2]
+            })
+
+        }
+        console.log(data) // 输出： [{…}, {…}, {…}] 第一个元素是：{title: '血战钢铁岭', Year: '上映时间:1995'}
+        console.log('结束了')
+    </script>
+</body>
+
+</html>

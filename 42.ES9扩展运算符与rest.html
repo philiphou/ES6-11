@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES9 扩展运算符与rest参数</title>
+</head>
+
+<body>
+    <script>
+        function connect1({
+            host,
+            port,
+            username,
+            password
+        }) {
+            console.log(host)
+            console.log(port)
+            console.log(username)
+            console.log(password)
+        }
+        connect1({
+            host: "127.0.0.1",
+            port: 8000,
+            username: "liyi",
+            password: 520
+        })
+
+
+        function connect2({
+            host,
+            port,
+            ...rst
+        }) {
+            console.log(host)
+            console.log(port)
+            console.log(rst)
+        }
+        connect2({
+                host: "127.0.0.1",
+                port: 5000,
+                username: "tian",
+                password: 888
+            }) // 输出：127.0.0.1 5000 {username: 'tian', password: 888} 此处剩下的参数封装在了rst 对象里
+
+
+        //  扩展运算符对对象的应用： 
+
+        const skillA = {
+            langs: "JAVA",
+            sport: "soccer"
+        }
+        const skillB = {
+            语言: "JS",
+            运动: "篮球"
+        }
+        const skillC = {
+            年龄: 35
+
+        }
+
+        //  利用扩展运算符： ... 就能集合各个对象得到一个字符串
+
+        const addAll = {...skillA,
+            ...skillB,
+            ...skillC
+        }
+
+        console.log(addAll) // 输出：{langs: 'JAVA', sport: 'soccer', 语言: 'JS', 运动: '篮球', 年龄: 35}
+    </script>
+</body>
+
+</html>

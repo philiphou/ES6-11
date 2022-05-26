@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES9 正则扩展</title>
+</head>
+
+<body>
+    <script>
+        // 1. 声明一个字符串：
+        let str1 = '<a href="http://www.baidu.com">百度</a>'
+            //  2. 提取url 与 标签文本
+            // 2.1 声明一个正则： 
+        const reg = /<a href="(.*)">(.*)<\/a>/; // 小括号加。*实现了对单个内容的捕获和提取，下面输出相应的网址和网站名称
+        // 2.2执行
+        const result = reg.exec(str1)
+        console.log(result)
+            // 上面输出： ['<a href="http://www.baidu.com">百度</a>', 'http://www.baidu.com', '百度', index: 0, input: '<a href="http://www.baidu.com">百度</a>', groups: undefined]
+        console.log(result[1]) // 输出： url
+        console.log(result[2]) // 输出： 文本
+
+        // 下面是 ES9 新特性： 
+        let str2 = '<a href="http://www.ifeng.com">凤凰</a>'
+            // 利用ES9 创建新的正则： (?<变量名>。*)
+        const reg2 = /<a href="(?<url>.*)">(?<网站名称>.*)<\/a>/;
+        const result2 = reg2.exec(str2)
+        console.log(result2) // 输出的结果 groups 里有这样两组键值对：url: "http://www.ifeng.com"； 网站名称: "凤凰"
+        console.log(typeof(result2)) // 输出： object
+        console.log(result2.groups.url) //输出：http: //www.ifeng.com
+        console.log(result2.groups['网站名称']) //输出：凤凰
+    </script>
+</body>
+
+</html>
