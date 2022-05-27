@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES11- BigInt 数据类型</title>
+</head>
+
+<body>
+    <script>
+        // 1. ES11 引入了新的数据类型： BigInt 大整型
+
+        // let a = 520 n;
+        // console.log(a, typeof(a))// 输出： 520n BigInt
+        // 大数值运算
+        let max = Number.MAX_SAFE_INTEGER
+        console.log(max) //输出：9007199254740991 这是最大的安全整数，到这么大之后再进行加法就不能表示准确结果了
+        console.log(max + 1) //输出：9007199254740992 这是最大的安全整数，到这么大之后再进行加法就不能表示准确结果了
+        console.log(max + 1) //输出：9007199254740992 这是最大的安全整数，到这么大之后再进行加法就不能表示准确结果了
+
+        // 可以借助 bigint 进行转换，必须都是BitInt数据类型才可以进行运算
+
+        console.log(BigInt(max) + BigInt(10)) // 输出：9007199254741001n
+    </script>
+
+</body>
+
+</html>

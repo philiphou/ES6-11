@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES11 字符串的 matchAll()方法</title>
+</head>
+
+<body>
+    <script>
+        let str = `
+        <ul>
+        <li>
+            <a>血战钢铁岭</a>
+            <p>上映时间:1995</p>
+        </li>
+        <li>
+            <a>我是谁</a>
+            <p>上映时间:1998</p>
+        </li>
+        <li>
+            <a>警察故事</a>
+            <p>上映时间:2005</p>
+        </li>
+    </ul>`
+
+        //  将正则表达式和 matchAll()结合，就可以批量提取字符串中指定的内容
+        // 1. 创建一个正则表达式，要提取上面字符串中的电影名称和上映时间；g 表示全局，s 类似于指定 dotall 就是匹配所有
+        const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>.*?<\/li>/gs
+            // 2. 调用正则方法,同时应用matchAll()方法：
+        const result = str.matchAll(reg)
+        console.log(result) // 返回结果是一个可迭代对象 iterator
+            //  利用 for...of 巡回对上面结果做一个遍历
+            // for (let e of result) {
+            //     console.log(e)
+            // }
+            // //  利用扩展运算符
+        let arr = [...result]
+        console.log(arr)
+        console.log(arr[1][2]) // 输出：上映时间:1998
+    </script>
+</body>
+
+</html>

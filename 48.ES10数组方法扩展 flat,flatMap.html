@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES10数组方法扩展:flat 与 flatMap</title>
+</head>
+
+<body>
+    <script>
+        //  flat有平的意思，可以将多维数组转换为一维数组
+
+        const arr = [1, 3, 5, [6, 8]] // 此处arr是个二维数组
+            //  1. 利用flat 将二维数组变成一维数组
+
+        console.log(arr.flat()) // 输出：[1, 3, 5, 6, 8]
+
+        const arr2 = [1, 2, 3, [5, 6, [7, 8]]] // 这个是三维数组
+        console.log(arr2.flat().flat()) //[1, 2, 3, 5, 6, 7, 8]
+            // 或者： 给 flat() 传入一个参数，表示深度，2 表示flat 两层，这样就把3维变成了1维
+        console.log(arr2.flat(2)) //[1, 2, 3, 5, 6, 7, 8]
+
+        //  flatMap()
+
+        const arr3 = [1, 2, 3, 4]
+        const result = arr3.map(e => e * 2)
+        console.log(result) //[2, 4, 6, 8]
+            //  如果我们map 函数对每一个元素迭代时候返回的又是一个数组，那么结果就变成了二维数组
+        const result2 = arr3.map(e => ['multi', e * 2])
+        console.log(result2) // 输出：[Array(2), Array(2), Array(2), Array(2)]
+        console.log(result2[2]) // 输出：['multi', 6]
+            //  如果我们想降维，那就用flatMap（）， 相当于是两个方法的结合
+        const result3 = arr3.flatMap(e => ['new', e * 2])
+        console.log(result3) // 输出：['new', 2, 'new', 4, 'new', 6, 'new', 8]
+    </script>
+</body>
+
+</html>

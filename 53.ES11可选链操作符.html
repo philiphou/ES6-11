@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES11可选链操作符</title>
+</head>
+
+<body>
+    <script>
+        //  可选链操作符： ？。 
+
+        function main(obj) {
+            //  如果传入的参数obj对象含有多个层级（比如对象里面嵌套对象）， 我们想找到最低层级属性 grade; 可以使用 ?.
+            const schoolGrade = obj ? .school ? .grade; // ?. 类似于语法糖，就是检测前面有没有定义，如果定义了继续往下寻找。
+            console.log(schoolGrade)
+
+        }
+        main({
+            person: {
+                name: 'liyi',
+                age: 30,
+                city: 'regina'
+            },
+            school: {
+                address: 'toronto',
+                grade: 3
+            }
+        })
+    </script>
+</body>
+
+</html>
